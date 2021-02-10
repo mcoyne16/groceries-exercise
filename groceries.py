@@ -1,5 +1,5 @@
 # groceries.py
-
+import operator
 #from pprint import pprint
 
 products = [
@@ -25,7 +25,33 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
-# pprint(products)
+# print(products)
 
 # TODO: write some Python code here to produce the desired output
+
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+    
+    Param: my_price (int or float) like 4000.444444
+    
+    Example: to_usd(4000.444444)
+    
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
+print("-------------")
+print('THERE ARE', len(products), "PRODUCTS:")
+print("-------------")
+
+#sort by ascending name attribute
+products = sorted(products, key=operator.itemgetter("name"))
+
+for item in products:
+    #print(type(item))
+    print("...", item['name'], to_usd(item["price"]))
+
+
+
+
