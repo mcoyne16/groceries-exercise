@@ -50,7 +50,7 @@ products = sorted(products, key=operator.itemgetter("name"))
 
 for item in products:
     #print(type(item))
-    print("...", item['name'], to_usd(item["price"]))
+    print("|", item['name'], to_usd(item["price"]))
 
 
 
